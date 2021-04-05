@@ -64,17 +64,17 @@ class InteractiveRecord
         DB[:conn].execute(sql, name)
     end
 
-    #def self.find_by(att)
-        # att_key = att.keys.join
-        # att_value = att.values.join
+    def self.find_by(att)
+        att_key = att.keys.join
+        att_value = att.values.join
 
-        # sql = "SELECT * FROM #{self.table_name} WHERE #{att_key} = ?"
-        # DB[:conn].execute(sql, att_value)
-#    end
-    def self.find_by(attribute_hash)
-        value = attribute_hash.values.first
-        formatted_value = value.class == Fixnum ? value : "'#{value}'"
-        sql = "SELECT * FROM #{self.table_name} WHERE #{attribute_hash.keys.first} = #{formatted_value}"
-        DB[:conn].execute(sql)
-    end
+        sql = "SELECT * FROM #{self.table_name} WHERE #{att_key} = ?"
+        DB[:conn].execute(sql, att_value)
+   end
+    # def self.find_by(attribute_hash)
+    #     value = attribute_hash.values.first
+    #     formatted_value = value.class == Fixnum ? value : "'#{value}'"
+    #     sql = "SELECT * FROM #{self.table_name} WHERE #{attribute_hash.keys.first} = #{formatted_value}"
+    #     DB[:conn].execute(sql)
+    # end
 end
